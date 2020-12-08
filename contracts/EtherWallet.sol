@@ -4,4 +4,8 @@ contract EtherWallet {
   function deposit() payable public {
     // no logic needed
   }
+
+  function send(address to, uint amount) public {
+    to.transfer(amount);
+  }
 };
