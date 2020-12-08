@@ -18,4 +18,12 @@ contract EtherWallet {
     }
     revert('sender is not allowed');
   }
+
+  function balanceOf() view public returns(uint) {
+    // 'this' represents the smart contract
+    // before solidity 0.5.0 the syntax was...
+    // 'return this.balance;'
+    // as of solidity 0.5.0, must explicitly transfer 'this' to an address type
+    return address(this).balance;
+  }
 };
