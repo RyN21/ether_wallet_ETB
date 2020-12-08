@@ -14,6 +14,8 @@ contract EtherWallet {
   function send(address to, uint amount) public {
     if(msg.sender == owner) {
       to.transfer(amount);
+      return;
     }
+    revert('sender is not allowed');
   }
 };
