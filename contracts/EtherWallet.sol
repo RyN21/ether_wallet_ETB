@@ -11,11 +11,11 @@ contract EtherWallet {
     // no logic needed
   }
 
-  function send(address to, uint amount) public {
+  function send(address payable to, uint amount) public {
     if(msg.sender == owner) {
       to.transfer(amount);
       return;
-    }
+    }  
     revert('sender is not allowed');
   }
 
