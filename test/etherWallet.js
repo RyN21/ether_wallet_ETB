@@ -1,11 +1,12 @@
 const EtherWallet = artifacts.require('EtherWallet');
 
-contract('EtherWallet', () => {
+contract('EtherWallet', (accounts) => {
   let etherWallet = null;
   before(async () => {
     etherWallet = await EtherWallet.deployed();
   });
-  it()
+  it("Should set account[0] as owner", async () => {
+    const owner = await etherWallet.owner();
+    assert(owner === accounts[0]);
+  })
 });
-
-//Create test to check if owner variable in smart contract is set properly
