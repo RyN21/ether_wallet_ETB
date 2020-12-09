@@ -1,5 +1,8 @@
 const EtherWallet = artifacts.require('EtherWallet');
 
 contract('EtherWallet', () => {
-  let etherWallet = null
+  let etherWallet = null;
+  before(async () => {
+    etherWallet = await EtherWallet.deployed();
+  });
 });
