@@ -16,5 +16,6 @@ contract('EtherWallet', (accounts) => {
       value: 100
     });
     const balance = await web3.eth.getBalance(etherWallet.address);
+    assert(parseInt(balance) === 100);
   });
 });
