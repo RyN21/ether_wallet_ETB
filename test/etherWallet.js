@@ -9,4 +9,11 @@ contract('EtherWallet', (accounts) => {
     const owner = await etherWallet.owner();
     assert(owner === accounts[0]);
   });
+
+  it("Should deposit ether to etherWallet", async () => {
+    await etherWallet.deposit({
+      from: accounts[0],
+      value: 100
+    });
+  });
 });
