@@ -18,4 +18,9 @@ contract('EtherWallet', (accounts) => {
     const balance = await web3.eth.getBalance(etherWallet.address);
     assert(parseInt(balance) === 100);
   });
+
+  it("Should return ether balance of smart contract" async () => {
+    const balance = await etherWallet.balanceOf();
+    assert(parseInt(balance) === 100)
+  })
 });
