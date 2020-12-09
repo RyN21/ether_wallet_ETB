@@ -26,4 +26,4 @@ contract EtherWallet {
     // as of solidity 0.5.0, must explicitly transfer 'this' to an address type
     return address(this).balance;
   }
-};
+}

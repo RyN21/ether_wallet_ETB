@@ -8,5 +8,5 @@ contract('EtherWallet', (accounts) => {
   it("Should set account[0] as owner", async () => {
     const owner = await etherWallet.owner();
     assert(owner === accounts[0]);
-  })
+  });
 });
