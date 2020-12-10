@@ -31,6 +31,8 @@ contract('EtherWallet', (accounts) => {
     assert(parseInt(balanceWallet) === 50)
 
     const balanceRecipientAfter = await web3.eth.getBalance(accounts[1]);
-    assert(parseInt(balanceRecipientAfter) - parseInt(balanceRecipientBefore) === 50); 
+    const finalBalance = web3.utils.toBN(balanceRecipientAfter);
+    const initialBalance = web3.utils.toBN(balanceRecipientbefore);
+    assert(finalBalance.sub(initialBalance).toNumber() === 50); 
   });
 });
