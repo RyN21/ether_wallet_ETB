@@ -27,5 +27,6 @@ contract('EtherWallet', (accounts) => {
   it("Should transfer ether to another wallet from owner", async () => {
     await etherWallet.send(accounts[1], 50, {from: accounts[0]});
     const balanceWallet = await web3.eth.getBalance(etherWallet.address);
+    assert(parseInt(balanceWallet) === 50)
   });
 });
