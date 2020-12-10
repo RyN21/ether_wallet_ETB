@@ -32,7 +32,7 @@ contract('EtherWallet', (accounts) => {
 
     const balanceRecipientAfter = await web3.eth.getBalance(accounts[1]);
     const finalBalance = web3.utils.toBN(balanceRecipientAfter);
-    const initialBalance = web3.utils.toBN(balanceRecipientbefore);
+    const initialBalance = web3.utils.toBN(balanceRecipientBefore);
     assert(finalBalance.sub(initialBalance).toNumber() === 50);
   });
 });
