@@ -19,7 +19,7 @@ contract('EtherWallet', (accounts) => {
     assert(parseInt(balance) === 100);
   });
 
-  it("Should return ether balance of smart contract" async () => {
+  it("Should return ether balance of smart contract", async () => {
     const balance = await etherWallet.balanceOf();
     assert(parseInt(balance) === 100)
   });
@@ -28,11 +28,11 @@ contract('EtherWallet', (accounts) => {
     const balanceRecipientBefore = await web3.eth.getBalance(accounts[1]);
     await etherWallet.send(accounts[1], 50, {from: accounts[0]});
     const balanceWallet = await web3.eth.getBalance(etherWallet.address);
-    assert(parseInt(balanceWallet) === 50)
+    assert(parseInt(balanceWallet) === 50);
 
     const balanceRecipientAfter = await web3.eth.getBalance(accounts[1]);
     const finalBalance = web3.utils.toBN(balanceRecipientAfter);
     const initialBalance = web3.utils.toBN(balanceRecipientbefore);
-    assert(finalBalance.sub(initialBalance).toNumber() === 50); 
+    assert(finalBalance.sub(initialBalance).toNumber() === 50);
   });
 });
