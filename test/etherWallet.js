@@ -35,4 +35,14 @@ contract('EtherWallet', (accounts) => {
     const initialBalance = web3.utils.toBN(balanceRecipientBefore);
     assert(finalBalance.sub(initialBalance).toNumber() === 50);
   });
+
+  it("Should NOT transfer ether if sender does not match owner", async () => {
+    try {
+      await etherWallet.send(accounts[1], 50, {from: accounts[2]});
+    } catch(error) {
+      assert(error.message.includes('sender is not allowed'));
+      return;
+    }
+    assert(false);
+  });
 });
