@@ -22,5 +22,10 @@ contract('EtherWallet', (accounts) => {
   it("Should return ether balance of smart contract" async () => {
     const balance = await etherWallet.balanceOf();
     assert(parseInt(balance) === 100)
-  })
+  });
+
+  it("Should transfer ether to another wallet from owner", async () => {
+    await etherWallet.send(accounts[1], 50, {from: accounts[0]});
+    
+  });
 });
