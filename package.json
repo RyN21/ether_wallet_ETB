@@ -1,5 +1,5 @@
 {
-  "name": "day6: Ether-Wallet",
+  "name": "day6-ether-wallet",
   "version": "1.0.0",
   "description": "Simple Ether Wallet build",
   "main": "truffle-config.js",
