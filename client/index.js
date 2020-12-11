@@ -27,3 +27,13 @@ const initWeb3 = () => {
     resolve(new Web3('http://localhost:9545'));
   });
 };
+
+const initContract = () => {
+  const deploymentKey = Object.keys(Crud.networks)[0];
+  return new web3.eth.Contract(
+    Crud.abi,
+    Crud
+      .networks[deploymentKey]
+      .address
+  );
+};
