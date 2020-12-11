@@ -6,16 +6,30 @@
   <body>
     <div class="containter">
       <div class="row">
-        <div class="col-sm-12">
-          <h1>Ether Wallet</h1>
+        <div class="col-sm-3">
+          <h1>Ether Wallet</h1><br><br>
+
           <form id="deposit">
             <h3>Deposit Ether</h3>
             <div class="form-group">
-              <label for="value">Amount</label>
-              <input id="value" type="integer" class="form-conntrol"></input>
+              <label for="amount">Amount</label>
+              <input id="amount" type="integer" class="form-control"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p id="create-result"></p>
+          </form>
+
+          <hr>
+
+          <form id="send">
+            <h3>Send Ether</h3>
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input id="amount" type="integer" class="form-control"></input>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+
         </div>
       </div>
     </div>
