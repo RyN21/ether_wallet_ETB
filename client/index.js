@@ -39,6 +39,14 @@ const initContract = () => {
 };
 
 const initApp = () => {
+  const $deposit = document.getElemebtById('deposit')
+  const $createResult = document.getElemebtById('create-result')
+  let accounts = []
+
+  web3.eth.getAccounts()
+    .then(_accounts => {
+      accounts = _accounts
+    });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
