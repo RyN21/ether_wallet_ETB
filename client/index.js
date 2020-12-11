@@ -37,3 +37,16 @@ const initContract = () => {
       .address
   );
 };
+
+const initApp = () => {
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  initWeb3()
+    .then(_web3 => {
+      web3 = _web3;
+      crud = initContract();
+      initApp();
+    })
+    .catch(e => console.log(e.message));
+});
