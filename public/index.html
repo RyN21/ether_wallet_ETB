@@ -4,40 +4,46 @@
     <script src="bundle.js"></script>
   </head>
   <body>
-    <div class="containter">
-      <div class="row">
-        <div class="col-sm-3">
-          <h1>Ether Wallet</h1><br><br>
+    <div class="containter px-4" align="center">
+      <div class="row gx-5">
+        <div class="col-sm-4">
+          <div class="p-3 border bg-light">
+            <h1>Ether Wallet</h1><br><br>
 
-          <form id="deposit">
-            <h3>Deposit Ether</h3>
-            <div class="form-group">
-              <label for="amount">Amount</label>
-              <input id="amount" type="number" class="form-control"></input>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <p id="create-result"></p>
-          </form>
+            <form id="deposit">
+              <h3>Deposit Ether</h3>
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input id="amount" type="number" class="form-control"></input>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <p id="create-result"></p>
+            </form>
 
-          <hr>
+            <hr>
 
-          <form id="send">
-            <h3>Send Ether</h3>
-            <div class="form-group">
-              <label for="amount">Amount</label>
-              <input id="amount" type="number" class="form-control"></input>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <form id="send">
+              <h3>Send Ether</h3>
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input id="amount" type="number" class="form-control"></input>
+                <label for="address">Address</label>
+                <input id="address" type="text" class="form-control"></input>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <p id="create-result"></p>
+            </form>
 
-          <hr>
+            <hr>
 
-          <form id="balance-of">
-            <div class="custom-control custom-switch">
-              <input class="custom-control-input" type="checkbox" id="balance">
-              <label class="custom-control-label" for="balance">Show Ether Balance</label>
-            </div>
-          </form>
+            <form id="balance-of">
+              <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" id="balance">
+                <label class="custom-control-label" for="balance">Show Ether Balance</label>
+              </div>
+              <p id="create-result"></p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
