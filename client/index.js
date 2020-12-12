@@ -41,6 +41,8 @@ const initContract = async () => {
 const initApp = () => {
   const $deposit = document.getElementById('deposit');
   const $depositResult = document.getElementById('deposit-result');
+  const $send = document.getElementById('send');
+  const $sendResult = document.getElementById('send-result');
   const $balance = document.getElementById('balance');
   let accounts = [];
 
@@ -71,6 +73,22 @@ const initApp = () => {
       })
       .catch(_e => {
         $depositResult.innerHTML = `Ooops... there was an error while trying to make a deposit...`;
+      });
+  });
+
+  $send.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const toAddress = e.target.elements[0].value;
+    const amount = e.target.elements[1].value;
+    etherWallet.methods
+      .send(toAddress, amount)
+      .send({from: accounts[0]})
+      .then(result => {
+        $sendResult.innerHTML = `Sent ${amount} wei to ${toAddress}`
+        refreshBalance();
+      })
+      .catch(_e => {
+        $sendResult.innerHTML = `Ooops... there was an error while trying to send.`;
       });
   });
 }
