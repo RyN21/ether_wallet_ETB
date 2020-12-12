@@ -13,8 +13,8 @@
             <form id="deposit">
               <h3>Deposit Ether</h3>
               <div class="form-group">
-                <label for="amount">Amount</label>
-                <input id="amount" type="number" class="form-control"></input>
+                <label for="deposit-amount">Value</label>
+                <input id="deposit-amount" type="number" class="form-control"></input>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
               <p id="deposit-result"></p>
@@ -25,10 +25,12 @@
             <form id="send">
               <h3>Send Ether</h3>
               <div class="form-group">
-                <label for="amount">Amount</label>
-                <input id="amount" type="number" class="form-control"></input>
-                <label for="address">Address</label>
-                <input id="address" type="text" class="form-control"></input>
+                <label for="send-to">To</label>
+                <input id="sent-to" type="text" class="form-control"></input>
+              </div>
+              <div class="form-group">
+                <label for="send-amount">Amount</label>
+                <input id="send-amount" type="number" class="form-control"></input>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
               <p id="send-result"></p>
@@ -36,13 +38,9 @@
 
             <hr>
 
-            <form id="balance-of">
-              <div class="custom-control custom-switch">
-                <input class="custom-control-input" type="checkbox" id="balance">
-                <label class="custom-control-label" for="balance">Show Ether Balance</label>
-              </div>
-              <p id="balance-of-result"></p>
-            </form>
+            <h2>Balance</h2>
+            <p id="balnce"></p>
+
           </div>
         </div>
       </div>

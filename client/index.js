@@ -28,19 +28,22 @@ const initWeb3 = () => {
   });
 };
 
-const initContract = () => {
-  const deploymentKey = Object.keys(Crud.networks)[0];
+const initContract = async () => {
+  const networkId = await web3.eth.net.getId();
   return new web3.eth.Contract(
-    Crud.abi,
-    Crud
-      .networks[deploymentKey]
+    EtherWallet.abi,
+    EtherWallet
+      .networks[networkId]
       .address
   );
 };
 
 const initApp = () => {
-  const $deposit = document.getElemebtById('deposit')
-  const $depositResult = document.getElemebtById('create-result')
+  const $deposit = document.getElemebtById('deposit');
+  const $depositResult = document.getElemebtById('deposit-result');
+
+
+  const $balance = document.getElemebtById('balance');
   let accounts = []
 
   web3.eth.getAccounts()
@@ -48,26 +51,41 @@ const initApp = () => {
       accounts = _accounts
     });
 
+  const refreshBalance = () => {
+    etherWallet.methods
+      .balanceOf()
+      .call()
+      .then(result => {
+        $balance.innerHTML = result;
+      });
+  };
+  refreshBalance();
+
   $deposit.addEventListener('submit', e => {
     e.preventDefault();
     const amount = e.target.elements[0].value;
     etherWallet.methods
-      .deposit(amount)
-      .send({from: accounts[0]})
-      .then(() => {
-        $depositResult.innerHTML = `You deposited #{amount}!`;
+      .deposit()
+      .send({from: accounts[0], value: amount})
+      .then(result => {
+        $depositResult.innerHTML = `You deposited ${amount} wei!`;
+        refreshBalance();
       })
       .catch(() => {
-        $depositResult.innerHTML = "An error occured";
-      })
-  })
+        $depositResult.innerHTML = `Ooops... an error occured while trying to make a deposit`;
+      });
+  });
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   initWeb3()
     .then(_web3 => {
       web3 = _web3;
-      crud = initContract();
+      return initContract();
+    })
+    .then(_etherWallet => {
+      etherWallet = _etherWallet;
       initApp();
     })
     .catch(e => console.log(e.message));
