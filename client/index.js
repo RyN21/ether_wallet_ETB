@@ -40,13 +40,27 @@ const initContract = () => {
 
 const initApp = () => {
   const $deposit = document.getElemebtById('deposit')
-  const $createResult = document.getElemebtById('create-result')
+  const $depositResult = document.getElemebtById('create-result')
   let accounts = []
 
   web3.eth.getAccounts()
     .then(_accounts => {
       accounts = _accounts
     });
+
+  $deposit.addEventListener('submit', e => {
+    e.preventDefault();
+    const amount = e.target.elements[0].value;
+    etherWallet.methods
+      .deposit(amount)
+      .send({from: accounts[0]})
+      .then(() => {
+        $depositResult.innerHTML = `You deposited #{amount}!`;
+      })
+      .catch(() => {
+        $depositResult.innerHTML = "An error occured";
+      })
+  })
 };
 
 document.addEventListener('DOMContentLoaded', () => {
