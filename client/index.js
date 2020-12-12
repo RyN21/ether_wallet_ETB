@@ -39,17 +39,15 @@ const initContract = async () => {
 };
 
 const initApp = () => {
-  const $deposit = document.getElemebtById('deposit');
-  const $depositResult = document.getElemebtById('deposit-result');
-
-
-  const $balance = document.getElemebtById('balance');
-  let accounts = []
+  const $deposit = document.getElementById('deposit');
+  const $depositResult = document.getElementById('deposit-result');
+  const $balance = document.getElementById('balance');
+  let accounts = [];
 
   web3.eth.getAccounts()
-    .then(_accounts => {
-      accounts = _accounts
-    });
+  .then(_accounts => {
+    accounts = _accounts;
+  });
 
   const refreshBalance = () => {
     etherWallet.methods
@@ -61,22 +59,21 @@ const initApp = () => {
   };
   refreshBalance();
 
-  $deposit.addEventListener('submit', e => {
+  $deposit.addEventListener('submit', (e) => {
     e.preventDefault();
     const amount = e.target.elements[0].value;
     etherWallet.methods
       .deposit()
       .send({from: accounts[0], value: amount})
       .then(result => {
-        $depositResult.innerHTML = `You deposited ${amount} wei!`;
+        $depositResult.innerHTML = `Successful ${amount} wei deposit`;
         refreshBalance();
       })
-      .catch(() => {
-        $depositResult.innerHTML = `Ooops... an error occured while trying to make a deposit`;
+      .catch(_e => {
+        $depositResult.innerHTML = `Ooops... there was an error while trying to make a deposit...`;
       });
   });
-
-};
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   initWeb3()
